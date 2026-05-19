@@ -1,0 +1,85 @@
+Requirements
+Python 3.10+
+Access to an EVM RPC endpoint (free options available)
+Optional: Etherscan API key, Twitter Bearer token
+Installation
+# Clone the repository
+git clone https://github.com/ClutchClimberJinx/didvlktr.git
+cd didvlktr
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Copy and configure environment
+cp .env.example .env
+# Edit .env with your API keys
+Basic Usage
+# Analyze a contract (minimum — just RPC, no API keys needed)
+python -m src.main 0xContractAddressHere
+
+# Full analysis with social signals
+python -m src.main 0xContractAddressHere --token PEPE --etherscan-key YOUR_KEY
+
+# Output as JSON
+python -m src.main 0xContractAddressHere --output json
+
+# Save report to file
+python -m src.main 0xContractAddressHere --save report.json
+
+# Analyze BNB Chain contract
+python -m src.main 0xContractAddressHere --chain bsc --rpc https://bsc-dataseed.binance.org
+
+# Skip social analysis (faster)
+python -m src.main 0xContractAddressHere --no-social
+
+Risk Factors & Weights
+Risk Factor	Weight	Description
+no_source_code	+30	Contract not verified on Etherscan
+self_destruct	+25	SELFDESTRUCT opcode in bytecode
+honeypot_pattern	+25	Sell-blocking code patterns found
+mint_function	+20	Unrestricted mint capability detected
+high_owner_supply	+20	Top holder owns >20% of supply
+no_liquidity_lock	+20	No LP token lock detected
+blacklist_function	+20	Address blacklisting in contract
+ownership_not_renounced	+15	Active owner with admin rights
+fee_manipulation	+15	Dynamic fee setter with high values
+low_liquidity	+15	Contract holds <0.5 ETH
+proxy_contract	+10	EIP-1967 upgradeable proxy detected
+young_contract	+10	Very new contract, <10 transactions
+few_holders	+10	Fewer than 50 unique token holders
+Risk Levels
+Level	Score Range	Meaning
+🟢 LOW	0–29	No critical flags — standard due diligence applies
+🟡 MEDIUM	30–59	Some suspicious patterns — proceed with caution
+🔴 HIGH	60–79	Significant red flags — extreme caution required
+💀 CRITICAL	80–100	Multiple severe indicators — do not interact
+Environment Variables
+Variable	Required	Description
+RPC_URL	Yes	EVM JSON-RPC endpoint URL
+ETHERSCAN_API_KEY	Recommended	Enables source code checks
+TWITTER_BEARER_TOKEN	Optional	Enables Twitter/X social analysis
+BSCSCAN_API_KEY	Optional	BNB Chain source verification
+Supported Chains
+Chain	Flag	Default RPC
+Ethereum Mainnet	--chain eth	https://eth.llamarpc.com
+BNB Smart Chain	--chain bsc	https://bsc-dataseed.binance.org
+Polygon	--chain polygon	https://polygon-rpc.com
+Arbitrum One	--chain arb	https://arb1.arbitrum.io/rpc
+🏗️ Project Structure
+rugpull-detector/
+├── src/
+│   ├── main.py                    # CLI entry point
+│   ├── analyzers/
+│   │   └── contract_analyzer.py   # On-chain contract analysis engine
+│   ├── collectors/
+│   │   └── social_collector.py    # Twitter, Telegram, CoinGecko collector
+│   └── utils/
+│       └── report.py              # Report generator & terminal formatter
+├── tests/
+│   └── test_analyzer.py           # pytest unit tests
+├── .env.example                   # Environment config template
+├── requirements.txt
+└── README.md
+🧪 Running Tests
+pip install pytest
+pytest tests/ -v
